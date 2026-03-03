@@ -21,13 +21,12 @@ public:
     }
 };
 
-
-// --- CLASS 2: TEAM ---
 class Team {
 public:
     std::string teamName;
     std::vector<Player> squad;
-    int goalsScored; // NEW: Keep track of goals
+    // Keep track of goals
+    int goalsScored; 
 
     Team(std::string name) : teamName(name), goalsScored(0) {}
 
@@ -35,13 +34,28 @@ public:
         Player newPlayer(n, s);
         squad.push_back(newPlayer);
     }
+
+    int getTeamRating() {
+        if (squad.empty()) {
+            // Avoid division by zero
+            return 0; 
+        }
+        int totalRating = 0;
+        for (const Player& p : squad) {
+            totalRating += p.rating;
+        }
+        // Average = total / number of players
+		return totalRating / squad.size(); 
+	}
+
 };
 class MatchSimulator {
 private:
-
     Team* homeTeam;
     Team* awayTeam;
-    std::mt19937 rng; // The C++ Random Number Generator
+    // The C++ Random Number Generator
+    std::mt19937 rng; 
+
 
 public:
     MatchSimulator(Team* home, Team* away) {
@@ -52,24 +66,30 @@ public:
     }
 
     void playMatch() {
-        std::cout << "--- KICK OFF: " << homeTeam->teamName << " vs " << awayTeam->teamName << " ---\n\n";
+		int homeRating = homeTeam->getTeamRating();
+		int awayRating = awayTeam->getTeamRating();
+		int totalRating = homeRating + awayRating;
+
+        std::cout << "--- KICK OFF ---\n";
+        std::cout << homeTeam->teamName << " (OVR: " << homeRating << ") vs ";
+        std::cout << awayTeam->teamName << " (OVR: " << awayRating << ")\n\n";
 
         // THE GAME LOOP: 1 to 90 minutes
         for (int minute = 1; minute <= 90; ++minute) {
 
-            // Generate a random number between 1 and 100
-            std::uniform_int_distribution<int> chanceDist(1, 100);
-            int eventRoll = chanceDist(rng);
+            // 5 % chance of an "Attack" happening every minute
+            std::uniform_int_distribution<int> eventDist(1, 100);
+            if (eventDist(rng) <= 5) {
+				std::uniform_int_distribution<int> teamDist(1, totalRating);
+				int attackRoll = teamDist(rng);
 
-            // A 2% chance per minute that the Home Team scores
-            if (eventRoll <= 2) {
-                homeTeam->goalsScored++;
-                std::cout << "[" << minute << "'] GOAL for " << homeTeam->teamName << "!\n";
-            }
-            // A 2% chance per minute that the Away Team scores (numbers 3 and 4)
-            else if (eventRoll > 2 && eventRoll <= 4) {
-                awayTeam->goalsScored++;
-                std::cout << "[" << minute << "'] GOAL for " << awayTeam->teamName << "!\n";
+                if (attackRoll <= homeRating) {
+					simulateEvent(homeTeam, minute);
+                }
+                else {
+					simulateEvent(awayTeam, minute);
+                }
+
             }
         }
 
@@ -78,7 +98,21 @@ public:
         std::cout << homeTeam->teamName << ": " << homeTeam->goalsScored << "\n";
         std::cout << awayTeam->teamName << ": " << awayTeam->goalsScored << "\n";
     }
+    //A separate function just for handling a shot on goal
+    void simulateEvent(Team* attackingTeam, int minute) {
+        std::uniform_int_distribution<int> shotDist(1, 100);
+
+        // 30% chance that an attack turns into a goal
+        if (shotDist(rng) <= 30) {
+            attackingTeam->goalsScored++;
+            std::cout << "[" << minute << "'] GOAL!!! " << attackingTeam->teamName << " scores!\n";
+        }
+        else {
+            std::cout << "[" << minute << "'] " << attackingTeam->teamName << " attacks, but the shot is saved.\n";
+        }
+    }
 };
+
 int main() {
     // 1. Create a Team
     Team home("Arsenal");
@@ -96,7 +130,7 @@ int main() {
     // We use the '&' symbol to pass the "memory address" (pointer) of the teams
 	MatchSimulator simulator(&home, &away);
 
-    // 3. Play the game!
+    // 3. Play the game
     simulator.playMatch();
 
     std::cout << "\nPress Enter to exit...";
