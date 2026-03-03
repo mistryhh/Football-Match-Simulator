@@ -105,7 +105,14 @@ public:
         // 30% chance that an attack turns into a goal
         if (shotDist(rng) <= 30) {
             attackingTeam->goalsScored++;
-            std::cout << "[" << minute << "'] GOAL!!! " << attackingTeam->teamName << " scores!\n";
+            // Distribution from 0 to the last index of the squad array
+            std::uniform_int_distribution<int> playerDist(0, attackingTeam->squad.size() - 1);
+            // Pick a random index
+            int randomPlayerIndex = playerDist(rng);
+            // Get the player's name from that index
+            std::string scorerName = attackingTeam->squad[randomPlayerIndex].name;
+
+            std::cout << "[" << minute << "'] GOAL!!! " << scorerName << " scores for " << attackingTeam->teamName << "!\n";
         }
         else {
             std::cout << "[" << minute << "'] " << attackingTeam->teamName << " attacks, but the shot is saved.\n";
