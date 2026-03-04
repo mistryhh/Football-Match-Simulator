@@ -5,6 +5,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <limits>
 
 class Player {
 public:
@@ -202,9 +203,21 @@ int main() {
         
 		int homeChoice, awayChoice;
         std::cout << "\nEnter number for HOME team: ";
-		std::cin >> homeChoice;
+        // Check if the input failed (e.g they typed a letter)
+        if (!(std::cin >> homeChoice)) {
+            std::cout << "\nInvalid input. Please type a number.\n\n";
+			std::cin.clear(); // Clear the error state
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
 		std::cout << "Enter number for AWAY team: ";
-        std::cin >> awayChoice;
+        if (!(std::cin >> awayChoice)) {
+            std::cout << "\nInvalid input. Please type a number.\n\n";
+            std::cin.clear(); 
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
 
 		// Validate Input
         if(homeChoice < 1 || homeChoice > allTeams.size() || awayChoice < 1 || awayChoice > allTeams.size() || homeChoice == awayChoice) {
