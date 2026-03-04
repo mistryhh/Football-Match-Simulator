@@ -85,17 +85,15 @@ public:
 
             // 5 % chance of an "Attack" happening every minute
             std::uniform_int_distribution<int> eventDist(1, 100);
-            if (eventDist(rng) <= 5) {
+			int eventRoll = eventDist(rng);
+            // 10% chance of an event happening
+            if (eventRoll <= 10) {
 				std::uniform_int_distribution<int> teamDist(1, totalRating);
-				int attackRoll = teamDist(rng);
 
-                if (attackRoll <= homeRating) {
-					simulateEvent(homeTeam, minute);
-                }
-                else {
-					simulateEvent(awayTeam, minute);
-                }
+				Team* attacker = (teamDist(rng) <= homeRating) ? homeTeam : awayTeam;
+				Team* defender = (attacker == homeTeam) ? awayTeam : homeTeam;
 
+				simulateEvent(attacker, defender, minute);
             }
         }
 
@@ -106,24 +104,30 @@ public:
         std::cout << "==================================================\n\n";
     }
     //A separate function just for handling a shot on goal
-    void simulateEvent(Team* attackingTeam, int minute) {
-        std::uniform_int_distribution<int> shotDist(1, 100);
+    void simulateEvent(Team* attacker, Team* defender, int minute) {
+        std::uniform_int_distribution<int> chanceDist(1, 100);
+        int outcome = chanceDist(rng);
 
-        // 30% chance that an attack turns into a goal
-        if (shotDist(rng) <= 30) {
-            attackingTeam->goalsScored++;
-            // Distribution from 0 to the last index of the squad array
-            std::uniform_int_distribution<int> playerDist(0, attackingTeam->squad.size() - 1);
-            // Pick a random index
-            int randomPlayerIndex = playerDist(rng);
-            // Get the player's name from that index
-            std::string scorerName = attackingTeam->squad[randomPlayerIndex].name;
+        // Pick a random player 
+        std::uniform_int_distribution<int> playerDist(0, attacker->squad.size() - 1);
+        std::string activePlayer = attacker->squad[playerDist(rng)].name;
 
-            std::cout << "[" << minute << "'] GOAL!!! " << scorerName << " scores for " << attackingTeam->teamName << "!\n";
+        if (outcome <= 30) {
+            attacker->goalsScored++;
+            std::cout << "[" << minute << "'] GOAL!!! Absolute screamer from " << activePlayer << " for " << attacker->teamName << "!\n";
+        }
+        else if (outcome <= 60) {
+            std::cout << "[" << minute << "'] " << activePlayer << " gets a shot off, but the " << defender->teamName << " keeper makes a great save!\n";
+        }
+        else if (outcome <= 80) {
+            std::cout << "[" << minute << "'] Heavy tackle! " << activePlayer << " goes into the referee's book with a yellow card.\n";
+        }
+        else if(outcome <= 90) {
+            std::cout << "[" << minute << "'] " << activePlayer << " takes a shot, but it goes wide of the post.\n";
         }
         else {
-            std::cout << "[" << minute << "'] " << attackingTeam->teamName << " attacks, but the shot is saved.\n";
-        }
+            std::cout << "[" << minute << "'] " << activePlayer << " is caught offside. Free kick for " << defender->teamName << ".\n";
+		}
     }
 };
 
@@ -139,6 +143,7 @@ int main() {
     Team away("Manchester City");
     away.addPlayer("Erling Haaland", 91);
     away.addPlayer("Kevin De Bruyne", 90);
+	away.addPlayer("Phil Foden", 85);
 
     // 2. Create the Engine & pass the teams
     // We use the '&' symbol to pass the "memory address" (pointer) of the teams
