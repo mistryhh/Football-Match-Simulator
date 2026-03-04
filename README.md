@@ -48,4 +48,4 @@ To run this project, you will need:
 **Team Selection**:
 ![Match Simulator Menu](./images/Team_Selection.png)
 **Match Simulation**:
-![Match Simulation in Progress](.\images\Match_Simulation.png)
+![Match Simulation in Progress](./images/Match_Simulation.png)
