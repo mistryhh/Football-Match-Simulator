@@ -3,6 +3,8 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <fstream>
+#include <sstream>
 
 class Player {
 public:
@@ -15,7 +17,7 @@ public:
         name = n;
         rating = r;
     }
-
+	// A simple function to print player stats
     void printStats() {
         std::cout << "Player: " << name << " | Rating: " << rating << std::endl;
     }
@@ -34,7 +36,7 @@ public:
         Player newPlayer(n, s);
         squad.push_back(newPlayer);
     }
-
+	// A function to calculate the average team rating based on the players in the squad
     int getTeamRating() {
         if (squad.empty()) {
             // Avoid division by zero
@@ -111,48 +113,125 @@ public:
         // Pick a random player 
         std::uniform_int_distribution<int> playerDist(0, attacker->squad.size() - 1);
         std::string activePlayer = attacker->squad[playerDist(rng)].name;
-
+        
         if (outcome <= 30) {
+			// 30% chance of a goal being scored
             attacker->goalsScored++;
             std::cout << "[" << minute << "'] GOAL!!! Absolute screamer from " << activePlayer << " for " << attacker->teamName << "!\n";
         }
         else if (outcome <= 60) {
+			// 30% chance of a save being made
             std::cout << "[" << minute << "'] " << activePlayer << " gets a shot off, but the " << defender->teamName << " keeper makes a great save!\n";
         }
         else if (outcome <= 80) {
+			// 20% chance of a foul being committed
             std::cout << "[" << minute << "'] Heavy tackle! " << activePlayer << " goes into the referee's book with a yellow card.\n";
         }
         else if(outcome <= 90) {
+			// 10% chance of a shot going wide
             std::cout << "[" << minute << "'] " << activePlayer << " takes a shot, but it goes wide of the post.\n";
         }
         else {
+			// 10% chance of an offside
             std::cout << "[" << minute << "'] " << activePlayer << " is caught offside. Free kick for " << defender->teamName << ".\n";
 		}
     }
 };
+std::vector<Team> loadTeamsDatabase(std::string fileName) {
+	std::vector<Team> database;
+	std::fstream file(fileName);
+	std::string line;
 
+	// Check if the file was opened successfully
+    if(!file.is_open()) {
+        std::cout << "Error: Could not open " << fileName << ". Make sure it is in the same folder as the code!\n";
+        return database;
+	}
+
+	//Read file line by line
+    while (std::getline(file, line)) {
+		std::stringstream ss(line);
+        std::string teamName, playerName, playerRating;
+
+        //Split by comma
+		std::getline(ss, teamName, ',');
+		std::getline(ss, playerName, ',');
+		std::getline(ss, playerRating, ',');
+
+        if(teamName.empty() || playerName.empty() || playerRating.empty()) {
+            continue; 
+		}
+
+		int skill = std::stoi(playerRating);
+
+		// Check if team already exists in the database
+		bool teamExists = false;
+        for (Team& t : database) {
+            if(t.teamName == teamName) {
+                t.addPlayer(playerName, skill);
+				teamExists = true;
+                break;
+			}
+        }
+
+		// If team doesn't exist, create it and add the player
+        if (!teamExists) {
+            Team newTeam(teamName);
+            newTeam.addPlayer(playerName, skill);
+			database.push_back(newTeam);
+        }
+    }
+	return database;
+}
 int main() {
-    // 1. Create a Team
-    Team home("Arsenal");
+    // Load the database
+    std::vector<Team> allTeams = loadTeamsDatabase("teams.txt");
 
-    // 2. Add Players to the Team
-    home.addPlayer("Bukayo Saka", 88);
-    home.addPlayer("Martin Odegaard", 87);
-    home.addPlayer("Declan Rice", 86);
+    if(allTeams.size() < 2) {
+        std::cout << "Not enough teams loaded to play a match. Press Enter to exit.";
+		std::cin.get();
+        return 0;
+	}   
+    // Main Menu Loop
+    while (true) {
+        std::cout << "WELCOME TO THE FOOTBALL MATCH SIMULATOR\n";
+        std::cout << "Available Teams:\n";
+        for (int i = 0; i < allTeams.size(); i++) {
+            std::cout << i + 1 << ". " << allTeams[i].teamName << " (OVR: " << allTeams[i].getTeamRating() << ")\n";
+        }
+        
+		int homeChoice, awayChoice;
+        std::cout << "\nEnter number for HOME team: ";
+		std::cin >> homeChoice;
+		std::cout << "Enter number for AWAY team: ";
+        std::cin >> awayChoice;
 
-    Team away("Manchester City");
-    away.addPlayer("Erling Haaland", 91);
-    away.addPlayer("Kevin De Bruyne", 90);
-	away.addPlayer("Phil Foden", 85);
+		// Validate Input
+        if(homeChoice < 1 || homeChoice > allTeams.size() || awayChoice < 1 || awayChoice > allTeams.size() || homeChoice == awayChoice) {
+            std::cout << "\nInvalid choices. Try again.\n\n";
+            continue;
+		}
+        
+        // Setup and play the match
+        // Arrays are 0-indexed, so we subtract 1 from the user's choice
+		Team home = allTeams[homeChoice - 1];
+        Team away = allTeams[awayChoice - 1];
+        
+        // Reset goals to 0 in case we play multiple matches
+		home.goalsScored = 0;
+        away.goalsScored = 0;
 
-    // 2. Create the Engine & pass the teams
-    // We use the '&' symbol to pass the "memory address" (pointer) of the teams
-	MatchSimulator simulator(&home, &away);
+		MatchSimulator simulator(&home, &away);
+		simulator.playMatch();
 
-    // 3. Play the game
-    simulator.playMatch();
-
-    std::cout << "\nPress Enter to exit...";
-    std::cin.get();
+		// Ask to play again
+		char playAgain;
+        std::cout << "Play another match? (y/n): ";
+        std::cin >> playAgain;
+        if (playAgain != 'y' && playAgain != 'Y') {
+            break; // Exit the loop
+        }
+        std::cout << "\n\n";
+    }
     return 0;
 }

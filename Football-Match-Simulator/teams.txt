@@ -1,0 +1,220 @@
+Arsenal,David Raya,85
+Arsenal,Ben White,84
+Arsenal,William Saliba,88
+Arsenal,Gabriel Magalhaes,86
+Arsenal,Oleksandr Zinchenko,83
+Arsenal,Declan Rice,87
+Arsenal,Martin Odegaard,88
+Arsenal,Thomas Partey,84
+Arsenal,Bukayo Saka,89
+Arsenal,Gabriel Martinelli,85
+Arsenal,Kai Havertz,84
+Aston Villa,Emiliano Martinez,86
+Aston Villa,Matty Cash,80
+Aston Villa,Ezri Konsa,82
+Aston Villa,Pau Torres,83
+Aston Villa,Lucas Digne,80
+Aston Villa,Boubacar Kamara,82
+Aston Villa,Douglas Luiz,84
+Aston Villa,John McGinn,83
+Aston Villa,Leon Bailey,82
+Aston Villa,Moussa Diaby,83
+Aston Villa,Ollie Watkins,85
+Bournemouth,Neto,79
+Bournemouth,Adam Smith,76
+Bournemouth,Ilya Zabarnyi,78
+Bournemouth,Marcos Senesi,79
+Bournemouth,Milos Kerkez,77
+Bournemouth,Lewis Cook,78
+Bournemouth,Ryan Christie,77
+Bournemouth,Marcus Tavernier,78
+Bournemouth,Antoine Semenyo,78
+Bournemouth,Justin Kluivert,79
+Bournemouth,Dominic Solanke,82
+Brentford,Mark Flekken,78
+Brentford,Mads Roerslev,76
+Brentford,Ethan Pinnock,79
+Brentford,Nathan Collins,78
+Brentford,Rico Henry,79
+Brentford,Christian Norgaard,80
+Brentford,Mathias Jensen,79
+Brentford,Vitaly Janelt,78
+Brentford,Bryan Mbeumo,82
+Brentford,Yoane Wissa,78
+Brentford,Ivan Toney,84
+Brighton,Bart Verbruggen,78
+Brighton,Tariq Lamptey,77
+Brighton,Lewis Dunk,82
+Brighton,Jan Paul van Hecke,78
+Brighton,Pervis Estupinan,81
+Brighton,Pascal Gross,82
+Brighton,Billy Gilmour,78
+Brighton,Simon Adingra,79
+Brighton,Julio Enciso,78
+Brighton,Kaoru Mitoma,83
+Brighton,Evan Ferguson,79
+Chelsea,Robert Sanchez,80
+Chelsea,Reece James,84
+Chelsea,Thiago Silva,84
+Chelsea,Levi Colwill,81
+Chelsea,Ben Chilwell,82
+Chelsea,Moises Caicedo,83
+Chelsea,Enzo Fernandez,84
+Chelsea,Conor Gallagher,82
+Chelsea,Cole Palmer,86
+Chelsea,Raheem Sterling,83
+Chelsea,Nicolas Jackson,80
+Crystal Palace,Dean Henderson,78
+Crystal Palace,Daniel Munoz,78
+Crystal Palace,Joachim Andersen,81
+Crystal Palace,Marc Guehi,82
+Crystal Palace,Tyrick Mitchell,79
+Crystal Palace,Jefferson Lerma,79
+Crystal Palace,Adam Wharton,78
+Crystal Palace,Eberechi Eze,83
+Crystal Palace,Michael Olise,83
+Crystal Palace,Jordan Ayew,77
+Crystal Palace,Jean-Philippe Mateta,79
+Everton,Jordan Pickford,83
+Everton,Seamus Coleman,77
+Everton,James Tarkowski,81
+Everton,Jarrad Branthwaite,81
+Everton,Vitaliy Mykolenko,78
+Everton,James Garner,77
+Everton,Amadou Onana,80
+Everton,Abdoulaye Doucoure,80
+Everton,Jack Harrison,78
+Everton,Dwight McNeil,79
+Everton,Dominic Calvert-Lewin,79
+Fulham,Bernd Leno,82
+Fulham,Timothy Castagne,78
+Fulham,Tosin Adarabioyo,79
+Fulham,Calvin Bassey,78
+Fulham,Antonee Robinson,80
+Fulham,Joao Palhinha,84
+Fulham,Harrison Reed,78
+Fulham,Andreas Pereira,80
+Fulham,Alex Iwobi,79
+Fulham,Willian,79
+Fulham,Rodrigo Muniz,78
+Ipswich Town,Vaclav Hladky,74
+Ipswich Town,Harry Clarke,73
+Ipswich Town,Luke Woolfenden,74
+Ipswich Town,Cameron Burgess,74
+Ipswich Town,Leif Davis,76
+Ipswich Town,Sam Morsy,75
+Ipswich Town,Massimo Luongo,74
+Ipswich Town,Wes Burns,74
+Ipswich Town,Conor Chaplin,76
+Ipswich Town,Nathan Broadhead,75
+Ipswich Town,George Hirst,74
+Leicester City,Mads Hermansen,77
+Leicester City,Ricardo Pereira,79
+Leicester City,Wout Faes,78
+Leicester City,Jannik Vestergaard,77
+Leicester City,James Justin,78
+Leicester City,Harry Winks,78
+Leicester City,Wilfred Ndidi,79
+Leicester City,Kiernan Dewsbury-Hall,80
+Leicester City,Abdul Fatawu,77
+Leicester City,Stephy Mavididi,77
+Leicester City,Jamie Vardy,78
+Liverpool,Alisson Becker,89
+Liverpool,Trent Alexander-Arnold,87
+Liverpool,Ibrahima Konate,84
+Liverpool,Virgil van Dijk,89
+Liverpool,Andrew Robertson,85
+Liverpool,Alexis Mac Allister,85
+Liverpool,Dominik Szoboszlai,84
+Liverpool,Wataru Endo,81
+Liverpool,Mohamed Salah,90
+Liverpool,Luis Diaz,84
+Liverpool,Darwin Nunez,83
+Manchester City,Ederson,88
+Manchester City,Kyle Walker,85
+Manchester City,Ruben Dias,88
+Manchester City,John Stones,85
+Manchester City,Josko Gvardiol,85
+Manchester City,Rodri,91
+Manchester City,Kevin De Bruyne,91
+Manchester City,Bernardo Silva,87
+Manchester City,Phil Foden,88
+Manchester City,Jeremy Doku,84
+Manchester City,Erling Haaland,91
+Manchester United,Andre Onana,83
+Manchester United,Diogo Dalot,82
+Manchester United,Raphael Varane,84
+Manchester United,Lisandro Martinez,84
+Manchester United,Luke Shaw,83
+Manchester United,Casemiro,83
+Manchester United,Kobbie Mainoo,81
+Manchester United,Bruno Fernandes,87
+Manchester United,Alejandro Garnacho,82
+Manchester United,Marcus Rashford,84
+Manchester United,Rasmus Hojlund,82
+Newcastle United,Nick Pope,83
+Newcastle United,Kieran Trippier,84
+Newcastle United,Fabian Schar,82
+Newcastle United,Sven Botman,83
+Newcastle United,Dan Burn,80
+Newcastle United,Bruno Guimaraes,86
+Newcastle United,Joelinton,83
+Newcastle United,Sean Longstaff,79
+Newcastle United,Miguel Almiron,81
+Newcastle United,Anthony Gordon,83
+Newcastle United,Alexander Isak,85
+Nottingham Forest,Matz Sels,78
+Nottingham Forest,Neco Williams,77
+Nottingham Forest,Murillo,79
+Nottingham Forest,Willy Boly,78
+Nottingham Forest,Ola Aina,77
+Nottingham Forest,Ryan Yates,77
+Nottingham Forest,Danilo,78
+Nottingham Forest,Morgan Gibbs-White,81
+Nottingham Forest,Anthony Elanga,79
+Nottingham Forest,Callum Hudson-Odoi,79
+Nottingham Forest,Chris Wood,79
+Southampton,Gavin Bazunu,76
+Southampton,Kyle Walker-Peters,78
+Southampton,Taylor Harwood-Bellis,76
+Southampton,Jan Bednarek,77
+Southampton,Ryan Manning,76
+Southampton,Flynn Downes,76
+Southampton,Will Smallbone,75
+Southampton,Stuart Armstrong,76
+Southampton,David Brooks,76
+Southampton,Adam Armstrong,77
+Southampton,Che Adams,77
+Tottenham Hotspur,Guglielmo Vicario,84
+Tottenham Hotspur,Pedro Porro,83
+Tottenham Hotspur,Cristian Romero,85
+Tottenham Hotspur,Micky van de Ven,83
+Tottenham Hotspur,Destiny Udogie,82
+Tottenham Hotspur,Yves Bissouma,82
+Tottenham Hotspur,Pape Matar Sarr,81
+Tottenham Hotspur,James Maddison,85
+Tottenham Hotspur,Dejan Kulusevski,83
+Tottenham Hotspur,Brennan Johnson,80
+Tottenham Hotspur,Son Heung-min,88
+West Ham United,Alphonse Areola,82
+West Ham United,Vladimir Coufal,79
+West Ham United,Kurt Zouma,80
+West Ham United,Nayef Aguerd,80
+West Ham United,Emerson Palmieri,79
+West Ham United,Edson Alvarez,81
+West Ham United,Tomas Soucek,80
+West Ham United,James Ward-Prowse,82
+West Ham United,Mohammed Kudus,83
+West Ham United,Lucas Paqueta,84
+West Ham United,Jarrod Bowen,84
+Wolverhampton Wanderers,Jose Sa,81
+Wolverhampton Wanderers,Nelson Semedo,79
+Wolverhampton Wanderers,Max Kilman,80
+Wolverhampton Wanderers,Craig Dawson,79
+Wolverhampton Wanderers,Toti Gomes,78
+Wolverhampton Wanderers,Rayan Ait-Nouri,80
+Wolverhampton Wanderers,Mario Lemina,80
+Wolverhampton Wanderers,Joao Gomes,79
+Wolverhampton Wanderers,Pablo Sarabia,80
+Wolverhampton Wanderers,Hwang Hee-chan,81
+Wolverhampton Wanderers,Matheus Cunha,82
