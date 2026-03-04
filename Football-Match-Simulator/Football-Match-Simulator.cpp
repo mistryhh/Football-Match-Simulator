@@ -70,12 +70,18 @@ public:
 		int awayRating = awayTeam->getTeamRating();
 		int totalRating = homeRating + awayRating;
 
-        std::cout << "--- KICK OFF ---\n";
-        std::cout << homeTeam->teamName << " (OVR: " << homeRating << ") vs ";
-        std::cout << awayTeam->teamName << " (OVR: " << awayRating << ")\n\n";
+        std::cout << "\n==================================================\n";
+        std::cout << "KICK OFF: " << homeTeam->teamName << " vs " << awayTeam->teamName << "\n";
+        std::cout << "==================================================\n\n";
 
         // THE GAME LOOP: 1 to 90 minutes
         for (int minute = 1; minute <= 90; ++minute) {
+
+			// Halftime at 45 minutes
+            if (minute == 45) {
+                std::cout << "\n[45'] HALFTIME WHISTLE! Score is " << homeTeam->teamName << " " << homeTeam->goalsScored << " - " << awayTeam->goalsScored << " " << awayTeam->teamName << ".\n\n";
+                continue; 
+            }
 
             // 5 % chance of an "Attack" happening every minute
             std::uniform_int_distribution<int> eventDist(1, 100);
@@ -94,9 +100,10 @@ public:
         }
 
         // The match is over, print the final score
-        std::cout << "\n--- FULL TIME ---\n";
-        std::cout << homeTeam->teamName << ": " << homeTeam->goalsScored << "\n";
-        std::cout << awayTeam->teamName << ": " << awayTeam->goalsScored << "\n";
+        std::cout << "\n==================================================\n";
+        std::cout << "FULL TIME\n";
+        std::cout << homeTeam->teamName << "  " << homeTeam->goalsScored << " - " << awayTeam->goalsScored << "  " << awayTeam->teamName << "\n";
+        std::cout << "==================================================\n\n";
     }
     //A separate function just for handling a shot on goal
     void simulateEvent(Team* attackingTeam, int minute) {
